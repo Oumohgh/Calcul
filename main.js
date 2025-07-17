@@ -21,7 +21,7 @@ buttons.forEach(button => {
 display.value = "";  
      }
      else if(value === "=") {
-   if (firstNumber !== null && operator null && currentInput ()
+   if (firstNumber !== null && operator !== null  && currentInput !== "") {
    const secondNumber = parseFloat(currentInput);
    let result;
    switch (operator){ 
@@ -31,17 +31,29 @@ display.value = "";
         case '-':
             result = firstNumber - secondNumber;
             break;
-        case '*':
+        case '×':
             result = firstNumber * secondNumber;
             break;
         case '/':
-            result = firstNumber / secondNumber;
+            result = secondNumber !== 0 ? firstNumber / secondNumber : 'Error'; // n handle cases dial div sur 0
             break;
         default:
-            return; // ila makynch no operator  set
+            return "Error"; // ila makynch no operator  set
     }
     display.value = result; // Show the result in the display
-    currentInput = ''; // Reset current input for next calculation
+    currentInput = result.toString(); // Reset current input for next calculation
     firstNumber = null; // Reset first number for next calculation
     operator = null; // Reset operator for next calculation 
    }
+} else {  
+
+    if (currentInput !== " ") {
+        firstNumber = parseFloat(currentInput);
+        operator = value; // Settti operator
+        currentInput = ""; // resetti current input  l next n
+    }
+    });
+}
+    setupCalculator() ;
+} ;
+       
